@@ -5,6 +5,12 @@ let VidasEnemigo = 3
 
 
 function booting(){
+    let sectionSeleccionarAtaque = document.getElementById("select-ataque")
+    sectionSeleccionarAtaque.style.display = "none"
+
+    let sectionReiniciar = document.getElementById("reinicio")
+    sectionReiniciar.style.display = "none"
+
     let  botonMascotaJugador = document.getElementById("pick")
     botonMascotaJugador.addEventListener("click", pickearMascota)
 
@@ -20,6 +26,12 @@ function booting(){
 }
 
 function pickearMascota(){
+    let sectionSeleccionarMascota = document.getElementById("select-pet")
+    sectionSeleccionarMascota.style.display = "none"
+
+    let sectionSeleccionarAtaque = document.getElementById("select-ataque")
+    sectionSeleccionarAtaque.style.display = "block"
+
     let inputpessi = document.getElementById("pessi")
     let inputPepo = document.getElementById("pepo")
     let inputOctavio = document.getElementById("octavio")
@@ -136,6 +148,9 @@ function crearMensaje(resultado){
 }
 
 function crearMensajeFinal(resultadoFinal){
+    let sectionReiniciar = document.getElementById("reinicio")
+    sectionReiniciar.style.display = "block"
+
     let sectionMensajes = document.getElementById('msgs')
 
     let parrafo = document.createElement('p')
