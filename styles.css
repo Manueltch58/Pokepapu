@@ -1,0 +1,413 @@
+   
+    body{
+    background-color: #EAE6D9;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 2 1'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%23EAE6D9'/%3E%3Cstop offset='1' stop-color='%23DAD7BD'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23EAE6D9' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23EAE6D9' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='2' y2='2'%3E%3Cstop offset='0' stop-color='%23EAE6D9' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23EAE6D9' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='2' height='1'/%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23b)' points='0 1 0 0 2 0'/%3E%3Cpolygon fill='url(%23c)' points='2 1 2 0 0 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    }
+
+    #titulo {
+    color:rgb(245, 242, 243);
+    width:px;
+    height:30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position:relative;
+    top: -15px;
+    right: -13px;;
+    }
+
+    .card {
+    width: 420px;
+    height: auto;
+    margin: auto;
+    background-color:#021724;
+    border-radius: 8px;
+    z-index: 1;
+    box-shadow: 5px 12px 50px #010e16; 
+   }
+   
+   .tools {
+    display: flex;
+    align-items: center;
+    padding: 9px;
+   }
+   
+   .circle {
+    padding: 0 4px;
+   }
+   
+   .box {
+    display: inline-block;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    padding: 1px;
+    border-radius: 50%;
+    box-shadow: #011522;
+   }
+   
+   .red {
+    background-color: #ff5956;
+   }
+   
+   .yellow {
+    background-color: #ffbd44;
+   }
+   
+   .green {
+    background-color: #00ca4e;
+   }
+
+
+  #selectPet{ 
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+  }
+
+  input{
+    display:none;
+  }
+ 
+  .botoneslabel {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100px;
+    height: 100px;
+    padding: 12px;
+    margin: 5px;
+    margin-top: 15px;
+    border-radius: 28px;
+    border: 10;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+    position:static; 
+    top: -20px;
+    right: 320px;
+    cursor: pointer;
+  }
+
+   
+  .botoneslabel:hover {
+    letter-spacing: 3px;
+    background-color: #f54c9b;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #ce4cf580 0px 7px 29px 0px;
+   }
+   
+  .botoneslabel:active {
+    letter-spacing: 3px;
+    background-color: #f54c9b;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #01233a 0px 0px 0px 0px;
+    transform: translateY(1px);
+    transition: 100ms;
+   }
+
+   input:checked+label{
+    letter-spacing: 3px;
+    background-color: #f54c9b;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #ce4cf580 0px 7px 29px 0px;
+    transform: translateY(1px);
+    transition: 100ms;
+   }
+
+   .botoneslabel img {
+    align-items: center;
+    width: 90px;
+    transition: all .3s ease;
+    } 
+   
+   .botoneslabel img:hover {
+    align-items: center;
+    width: 105px;
+   }  
+   
+
+  #elija{
+    color:rgb(255, 255, 255);
+    height:10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+    bottom: 20px;
+    text-align: center
+  }
+
+  .botonPick{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  #pick {
+    padding: 17px 40px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+    position:relative;
+    cursor:pointer;
+   }
+   
+   #pick:hover {
+    letter-spacing: 3px;
+    background-color: #f54c9b;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #ce4cf580 0px 7px 29px 0px;
+   }
+   
+  #pick:active {
+    letter-spacing: 3px;
+    background-color: #c54cf5;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #ce4cf580 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 100ms;
+   }
+
+  #elijeAtaque{
+    color:rgb(245, 242, 243);
+    width:px;
+    height:30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position:relative;
+    text-align: center;
+    margin-bottom: 40px;
+   }
+
+   #msgs{
+    display: grid;
+    justify-items: center;
+    border-radius: 20px;
+    margin-top: 12px;
+    background: rgb(245, 242, 243);
+    margin-inline: auto;
+    padding-inline: 26px;
+    height: auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   }
+
+  #botonesAt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+
+  #botFuego {
+
+    padding: 12px 10px;
+    border-radius: 50px;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+    position:static; 
+    top: -10px;
+    right: 320px;
+   }
+   
+  #botFuego:hover {
+    letter-spacing: 3px;
+    background-color: #ff6723;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #f5a34c80 0px 7px 29px 0px;
+   }
+   
+  #botFuego:active {
+    letter-spacing: 3px;
+    background-color: hsl(16, 80%, 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: #f54c4c80 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+   }
+
+  #botAgua {
+    margin-inline: 8px;
+    padding: 12px 10px;
+    border-radius: 50px;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+    position:static; 
+    top: -10px;
+    right: 320px;
+   }
+   
+  #botAgua:hover {
+    letter-spacing: 3px;
+    background-color: #26c9fc;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #4cc5f580 0px 7px 29px 0px;
+   }
+   
+  #botAgua:active {
+    letter-spacing: 3px;
+    background-color: hsl(189, 80%, 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: #4cc5f580 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+   }
+
+  #botTierra {
+    padding: 12px 10px;
+    border-radius: 50px;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+    position:static; 
+    top: -20px;
+    right: 320px;
+   }
+   
+  #botTierra:hover {
+    letter-spacing: 3px;
+    background-color: #86d72f;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #4cf56b80 0px 7px 29px 0px;
+   }
+   
+  #botTierra:active {
+    letter-spacing: 3px;
+    background-color: #4cf565;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #4cf56b80 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+   }
+
+  /* #msgs{
+     
+   } */
+  #botonReinicio{
+    align-items: center;
+    padding: 17px 20px;
+    border-radius: 20px;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+    position:relative;
+    margin-bottom: 24px;
+   }
+   
+  #botonReinicio:hover {
+    letter-spacing: 3px;
+    background-color: #00a6ed;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #008eed 0px 5px 16px 1px;
+   }
+   
+  #botonReinicio:active {
+    letter-spacing: 3px;
+    background-color: #00a6ed;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #006fed 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 100ms;
+   }
+
+   #select-ataque{
+    flex-direction: column;
+   }
+
+   #playerpet{
+    color:#021724;
+    height:30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   }
+
+   #enemyPet{
+    color:#021724;
+    height:30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   }
+
+  #ataqueJugador{
+    padding: 1px;
+    color:rgb(245, 242, 243);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background:#021724;
+    border-radius: 10px;
+    margin-bottom: 12px;
+   }
+  #ataqueEnemigo{
+    padding: 1px;
+    color:rgb(245, 242, 243);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background:#021724;
+    border-radius: 10px;
+    margin-bottom: 12px;
+   }
+
+  #vidasJugador{
+    color:#021724;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  #VidasEnemigo{
+    color:#021724;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+   .ataques{
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 100px 100px;
+    text-align: center;
+    gap: 24px;
+    padding-inline: 22px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    justify-content: center;
+    background: rgb(245, 242, 243);
+    margin-top: 30px;
+    margin-inline: auto;
+    border-radius: 20px;
+
+   }
+
+  .cora{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+
+   
+  
+  
+  
+  
+  
+  
+   

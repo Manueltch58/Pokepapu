@@ -30,11 +30,11 @@ function pickearMascota(){
     sectionSeleccionarMascota.style.display = "none"
 
     let sectionSeleccionarAtaque = document.getElementById("select-ataque")
-    sectionSeleccionarAtaque.style.display = "block"
+    sectionSeleccionarAtaque.style.display = "flex"
 
     let inputpessi = document.getElementById("pessi")
     let inputPepo = document.getElementById("pepo")
-    let inputOctavio = document.getElementById("octavio")
+    let inputOctavio = document.getElementById("travis")
     let spanPlayerPet = document.getElementById("playerpet")
 
     if (inputpessi.checked){
@@ -44,8 +44,8 @@ function pickearMascota(){
         spanPlayerPet.innerHTML = "Pepo🐸"
         alert("Seleccionaste Pepo🐸 ")
     } else if (inputOctavio.checked){
-        spanPlayerPet.innerHTML = "Octavio mesa🎸"
-        alert("Seleccionaste a Octavio Mesa🎸")
+        spanPlayerPet.innerHTML = "travis🌵"
+        alert("Seleccionaste a el travieso🌵")
     } else {
         alert("Selecciona algo papu👻")
     }
@@ -67,7 +67,7 @@ function enemypick(){
     }
     else {
         // Octavio
-        SpanEnemyPet.innerHTML = "Octavio Mesa🎸"
+        SpanEnemyPet.innerHTML = "travis🌵"
     }
 
      
@@ -139,31 +139,33 @@ function revisarVidas(){
 }
 
 function crearMensaje(resultado){
-    let sectionMensajes = document.getElementById('msgs')
+    let sectionMensajes=document.getElementById('resultado')
+    let ataqueJugador=document.getElementById('ataqueJugador')
+    let ataqueEnemigo=document.getElementById('ataqueEnemigo')
 
-    let parrafo = document.createElement('p')
-    parrafo.innerHTML = 'Tu pet atacó con ' + atPlayer + ' el enemigo lazó un ataque de ' + enemyStroke + ". " + resultado 
-     
-    sectionMensajes.appendChild(parrafo)
+    let nuevoAtaqueDelJugador=document.createElement('p')
+    let nuevoAtaqueDelEnemigo=document.createElement('p')
+
+    sectionMensajes.innerHTML=resultado
+    nuevoAtaqueDelJugador.innerHTML=atPlayer
+    nuevoAtaqueDelEnemigo.innerHTML=enemyStroke
+
+    ataqueJugador.appendChild(nuevoAtaqueDelJugador)
+    ataqueEnemigo.appendChild(nuevoAtaqueDelEnemigo)
 }
-
 function crearMensajeFinal(resultadoFinal){
-    let sectionReiniciar = document.getElementById("reinicio")
-    sectionReiniciar.style.display = "block"
+    let sectionMensajes=document.getElementById('resultado')
+    sectionMensajes.innerHTML=resultadoFinal
 
-    let sectionMensajes = document.getElementById('msgs')
+    let botonFuego=document.getElementById('botFuego')
+    botonFuego.disabled=true
+    let botonAgua=document.getElementById('botAgua')
+    botonAgua.disabled=true
+    let botonTierra=document.getElementById('botTierra')
+    botonTierra.disabled=true
 
-    let parrafo = document.createElement('p')
-    parrafo.innerHTML = resultadoFinal
-     
-    sectionMensajes.appendChild(parrafo)
-
-    let butFire = document.getElementById("botFuego")
-    butFire.disabled = true
-    let butWater = document.getElementById("botAgua")
-    butWater.disabled = true
-    let butPlant = document.getElementById("botTierra")
-    butPlant.disabled = true
+    let sectionReiniciar=document.getElementById('reinicio')
+    sectionReiniciar.style.display='block'
 }
 
 function reiniciarJuego (){
