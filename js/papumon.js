@@ -1,41 +1,50 @@
+/* booting */
+const sectionSeleccionarAtaque = document.getElementById("select-ataque")
+const sectionReiniciar = document.getElementById("reinicio")
+const  botonMascotaJugador = document.getElementById("pick")
+const butFire = document.getElementById("botFuego")
+const butWater = document.getElementById("botAgua")
+const butPlant = document.getElementById("botTierra")
+const botonReiniciar = document.getElementById("botonReinicio")
+
+/* Pickear mascota */
+const sectionSeleccionarMascota = document.getElementById("select-pet")
+const inputpessi = document.getElementById("pessi")
+const inputPepo = document.getElementById("pepo")
+const inputOctavio = document.getElementById("travis")
+const spanPlayerPet = document.getElementById("playerpet")
+
+/* enemypick */
+const SpanEnemyPet = document.getElementById("enemyPet")
+
+/* combate */
+const spanVidasJugador = document.getElementById("vidasJugador")
+const spanVidasEnemigo = document.getElementById("VidasEnemigo")
+
+/* crearMensaje/final */
+const sectionMensajes=document.getElementById('resultado')
+const ataqueJugador=document.getElementById('ataqueJugador')
+const ataqueEnemigo=document.getElementById('ataqueEnemigo')
+
 let atPlayer
 let enemyStroke
 let vidasJugador = 3
 let VidasEnemigo = 3
 
 
-function booting(){
-    let sectionSeleccionarAtaque = document.getElementById("select-ataque")
+function booting(){ 
     sectionSeleccionarAtaque.style.display = "none"
-
-    let sectionReiniciar = document.getElementById("reinicio")
-    sectionReiniciar.style.display = "none"
-
-    let  botonMascotaJugador = document.getElementById("pick")
-    botonMascotaJugador.addEventListener("click", pickearMascota)
-
-    let butFire = document.getElementById("botFuego")
+    sectionReiniciar.style.display = "none"    
+    botonMascotaJugador.addEventListener("click", pickearMascota)    
     butFire.addEventListener("click", ataqueFuego)
-    let butWater = document.getElementById("botAgua")
     butWater.addEventListener("click", ataqueAgua)
-    let butPlant = document.getElementById("botTierra")
-    butPlant.addEventListener("click", ataqueTierra)
-
-    let botonReiniciar = document.getElementById("botonReinicio")
+    butPlant.addEventListener("click", ataqueTierra)    
     botonReiniciar.addEventListener("click", reiniciarJuego)
 }
 
-function pickearMascota(){
-    let sectionSeleccionarMascota = document.getElementById("select-pet")
-    sectionSeleccionarMascota.style.display = "none"
-
-    let sectionSeleccionarAtaque = document.getElementById("select-ataque")
+function pickearMascota(){ 
+    sectionSeleccionarMascota.style.display = "none" 
     sectionSeleccionarAtaque.style.display = "flex"
-
-    let inputpessi = document.getElementById("pessi")
-    let inputPepo = document.getElementById("pepo")
-    let inputOctavio = document.getElementById("travis")
-    let spanPlayerPet = document.getElementById("playerpet")
 
     if (inputpessi.checked){
         spanPlayerPet.innerHTML = "Pessi🥶"
@@ -55,7 +64,6 @@ function pickearMascota(){
 
 function enemypick(){
     let pickRandom = random(1,3)
-    let SpanEnemyPet = document.getElementById("enemyPet")
 
     if (pickRandom == 1){
         // Pessi
@@ -103,9 +111,6 @@ function enemyAt(){
 }
 
 function combate(){
-    let spanVidasJugador = document.getElementById("vidasJugador")
-    let spanVidasEnemigo = document.getElementById("VidasEnemigo")
-
     if(enemyStroke == atPlayer) {
         crearMensaje("Empate🤝")
     } else if(atPlayer == "fuego🔥" && enemyStroke == "planta🌱") {
@@ -139,10 +144,6 @@ function revisarVidas(){
 }
 
 function crearMensaje(resultado){
-    let sectionMensajes=document.getElementById('resultado')
-    let ataqueJugador=document.getElementById('ataqueJugador')
-    let ataqueEnemigo=document.getElementById('ataqueEnemigo')
-
     let nuevoAtaqueDelJugador=document.createElement('p')
     let nuevoAtaqueDelEnemigo=document.createElement('p')
 
@@ -154,17 +155,12 @@ function crearMensaje(resultado){
     ataqueEnemigo.appendChild(nuevoAtaqueDelEnemigo)
 }
 function crearMensajeFinal(resultadoFinal){
-    let sectionMensajes=document.getElementById('resultado')
     sectionMensajes.innerHTML=resultadoFinal
+    
+    butFire.disabled=true
+    butWater.disabled=true
+    butPlant.disabled=true
 
-    let botonFuego=document.getElementById('botFuego')
-    botonFuego.disabled=true
-    let botonAgua=document.getElementById('botAgua')
-    botonAgua.disabled=true
-    let botonTierra=document.getElementById('botTierra')
-    botonTierra.disabled=true
-
-    let sectionReiniciar=document.getElementById('reinicio')
     sectionReiniciar.style.display='block'
 }
 
