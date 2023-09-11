@@ -2,16 +2,12 @@
 const sectionSeleccionarAtaque = document.getElementById("select-ataque")
 const sectionReiniciar = document.getElementById("reinicio")
 const  botonMascotaJugador = document.getElementById("pick")
-const butFire = document.getElementById("botFuego")
-const butWater = document.getElementById("botAgua")
-const butPlant = document.getElementById("botTierra")
-const botonReiniciar = document.getElementById("botonReinicio")
 
-/* Pickear mascota */
+const botonReiniciar = document.getElementById("botonReinicio")
+const contenedorTarjetas = document.getElementById('contenedorTarjetas')
+
+/* Pickear mascota */z  
 const sectionSeleccionarMascota = document.getElementById("select-pet")
-const inputpessi = document.getElementById("pessi")
-const inputPepo = document.getElementById("pepo")
-const inputOctavio = document.getElementById("travis")
 const spanPlayerPet = document.getElementById("playerpet")
 
 /* enemypick */
@@ -20,25 +16,89 @@ const SpanEnemyPet = document.getElementById("enemyPet")
 /* combate */
 const spanVidasJugador = document.getElementById("vidasJugador")
 const spanVidasEnemigo = document.getElementById("VidasEnemigo")
+const contenedorAtaques = document.getElementById("contenedorAtaques")
 
 /* crearMensaje/final */
 const sectionMensajes=document.getElementById('resultado')
-const ataqueJugador=document.getElementById('ataqueJugador')
-const ataqueEnemigo=document.getElementById('ataqueEnemigo')
+const ataqueDelJugador=document.getElementById('ataqueJugador')
+const ataqueDelEnemigo=document.getElementById('ataqueEnemigo')
 
-let atPlayer
-let enemyStroke
+let pokepapus = []
+let botones = []
+let atPlayer = []
+let enemyStroke = []
+let opcionPokepapus
+let inputPessi
+let inputPepo
+let inputTravis
+let mascotaJugador
+let butFire
+let butWater
+let butPlant
+let indexAtaqueJugador
+let indexAtaqueEnemigo
+let ataquesPokepapu
+let ataquesPokepapuEnemigo
 let vidasJugador = 3
 let VidasEnemigo = 3
 
+class Pokepapu{
+    constructor(nombre, foto, vidas){
+        this.nombre = nombre
+        this.foto = foto
+        this.vidas = vidas
+        this.ataques = []
+    }
+}
 
-function booting(){ 
+let pessi = new Pokepapu('Pessi', './assets/pessi.png', '4')
+let pepo = new Pokepapu('Pepo', './assets/pepo.png', '4')
+let travis = new Pokepapu('Travis', './assets/travieso.png', '4')
+
+pessi.ataques.push(
+    {nombre: 'Congelar🧊', id: 'botAgua' },
+    {nombre: 'Congelar🧊', id: 'botAgua' },
+    {nombre: 'Congelar🧊', id: 'botAgua' },
+    {nombre: 'salto🐸', id: 'botTierra'},
+    {nombre: 'Iyee🔥', id: 'botFuego'}
+)
+
+pepo.ataques.push(
+    {nombre: 'salto🐸', id: 'botTierra' },
+    {nombre: 'salto🐸', id: 'botTierra' },
+    {nombre: 'salto🐸', id: 'botTierra' },
+    {nombre: 'Iyee🔥', id: 'botFuego'},
+    {nombre: 'Congelar🧊', id: 'botAgua'}
+)
+
+travis.ataques.push(
+    {nombre: 'Iyee🔥', id: 'botFuego' },
+    {nombre: 'Iyee🔥', id: 'botFuego' },    
+    {nombre: 'Iyee🔥', id: 'botFuego' },
+    {nombre: 'Congelar🧊', id: 'botAgua'},
+    {nombre: 'salto🐸', id: 'botTierra'}
+)
+
+pokepapus.push(pessi, pepo, travis)
+
+function booting(){
     sectionSeleccionarAtaque.style.display = "none"
+    pokepapus.forEach((Pokepapu) => {
+        opcionPokepapus = `
+        <input type="radio" class="radio-button__input" id=${Pokepapu.nombre} name="mascota">
+        <label class="botoneslabel" for="${Pokepapu.nombre}" >
+        <p>${Pokepapu.nombre}</p>
+        <img src="${Pokepapu.foto}" alt="${Pokepapu.nombre}">
+        </label>
+        `
+        contenedorTarjetas.innerHTML += opcionPokepapus
+
+        inputPessi = document.getElementById("Pessi")
+        inputPepo = document.getElementById("Pepo")
+        inputTravis = document.getElementById("Travis")    
+    })
     sectionReiniciar.style.display = "none"    
-    botonMascotaJugador.addEventListener("click", pickearMascota)    
-    butFire.addEventListener("click", ataqueFuego)
-    butWater.addEventListener("click", ataqueAgua)
-    butPlant.addEventListener("click", ataqueTierra)    
+    botonMascotaJugador.addEventListener("click", pickearMascota)       
     botonReiniciar.addEventListener("click", reiniciarJuego)
 }
 
@@ -46,71 +106,126 @@ function pickearMascota(){
     sectionSeleccionarMascota.style.display = "none" 
     sectionSeleccionarAtaque.style.display = "flex"
 
-    if (inputpessi.checked){
-        spanPlayerPet.innerHTML = "Pessi🥶"
+    if (inputPessi.checked){
+        spanPlayerPet.innerHTML = inputPessi.id
+        mascotaJugador = inputPessi.id
         alert("Elejiste a Pessi🧊")
     } else if (inputPepo.checked){
-        spanPlayerPet.innerHTML = "Pepo🐸"
+        spanPlayerPet.innerHTML = inputPepo.id
+        mascotaJugador = inputPepo.id
         alert("Seleccionaste Pepo🐸 ")
-    } else if (inputOctavio.checked){
-        spanPlayerPet.innerHTML = "travis🌵"
+    } else if (inputTravis.checked){
+        spanPlayerPet.innerHTML = inputTravis.id
+        mascotaJugador = inputTravis.id
         alert("Seleccionaste a el travieso🌵")
     } else {
+        location.reload()
         alert("Selecciona algo papu👻")
     }
-
+    extraerAtaques(mascotaJugador)
     enemypick()
 }
 
+function extraerAtaques(mascotaJugador){
+    let ataques
+    for (let i=0; i<pokepapus.length;i++) {
+        if(mascotaJugador === pokepapus[i].nombre){
+            ataques = pokepapus[i].ataques
+        }
+    }
+    mostrarAtaques(ataques)
+}
+
+function mostrarAtaques(ataques) {
+    ataques.forEach((ataque) => {
+        ataquesPokepapu = `
+        <button id=${ataque.id} class="botonAtaque BAtaque">${ataque.nombre}</button>
+        `
+        contenedorAtaques.innerHTML += ataquesPokepapu
+    })
+
+     butFire = document.getElementById("botFuego")
+     butWater = document.getElementById("botAgua")
+     butPlant = document.getElementById("botTierra")
+     botones = document.querySelectorAll(".BAtaque")
+} 
+
+function  sacuenciaAtaque(){
+    botones.forEach((boton) => {
+        boton.addEventListener("click", (e) =>{
+            if(e.target.textContent === "Iyee🔥"){
+                ataqueDelJugador.push("FUEGO")
+                console.log("ataqueDelJugador")
+                boton.style.background="#FFFFFF"
+            } else if(e.target.textContent === "Congelar🧊"){
+                ataqueDelJugador.push("AGUA")
+                console.log("ataqueDelJugador")
+                boton.style.background="#FFFFFF"
+            } else{
+                ataqueDelJugador.push("TIERRA")
+                console.log("ataqueDelJugador")
+                boton.style.background="#FFFFFF"    
+            }
+            enemyAtRandom()
+        })
+    })
+}
+
 function enemypick(){
-    let pickRandom = random(1,3)
-
-    if (pickRandom == 1){
-        // Pessi
-        SpanEnemyPet.innerHTML = "Pessi🥶"
-    }
-    else if (pickRandom == 2){
-        // Pepo
-        SpanEnemyPet.innerHTML = "Pepo🐸"
-    }
-    else {
-        // Octavio
-        SpanEnemyPet.innerHTML = "travis🌵"
-    }
-
-     
+    let pickRandom = random(0, pokepapus.length -1)
+    SpanEnemyPet.innerHTML = pokepapus[pickRandom].nombre
+    ataquesPokepapuEnemigo = pokepapus[pickRandom].ataquesPokepapuEnemigo
+    sacuenciaAtaque()
 }
 
-function ataqueFuego(){
-    atPlayer = "fuego🔥"
-    enemyAt()
-}
-function ataqueAgua(){
-    atPlayer = "awita💧"
-    enemyAt()
-}
-function ataqueTierra(){
-    atPlayer = "planta🌱"
-    enemyAt()
-}
-
-function enemyAt(){
-    let randomStroke = random(1, 3)
+function enemyAtRandom(){
+    let randomStroke = random(0, ataquesPokepapuEnemigo.length -1)
    
-    if (randomStroke == 1){
-        enemyStroke = "fuego🔥"
+    if (randomStroke == 0 || randomStroke == 1){
+        enemyStroke.push("fuego🔥")
     }
-    else if (randomStroke == 2){
-        enemyStroke = "awita💧"
+    else if (randomStroke == 3 || randomStroke == 4){
+        enemyStroke.push("awita💧")
     }
-    else if (randomStroke == 3){
-        enemyStroke = "planta🌱"
+    else{
+        enemyStroke.push("planta🌱")
     }
+    comsole.log(enemyStroke)
+    inciarPelea()
+}
 
-    combate()
+function inciarPelea(){
+    if (ataqueDelJugador.length === 5){
+        combate()
+    }
+}
+
+function indexAmbosOponentes(jugador, enemigo){
+    indexAtaqueJugador = atPlayer[jugador]
+    indexAtaqueEnemigo = enemyStroke[enemigo]
 }
 
 function combate(){
+
+    for (let index = 0; index < atPlayer.length; index++) {       
+       if(atPlayer[index]=== enemyStroke[index]){
+        indexAmbosOponentes(index, index)
+        crearMensaje("EMPATE")
+       }else if((atPlayer[index]=== "AGUA" && enemyStroke[index] === "FUEGO")){
+        indexAmbosOponentes(index, index)
+        crearMensaje("Ganaste")
+       } else if((atPlayer[index]=== "FUEGO" && enemyStroke[index] === "TIERRA")){
+        indexAmbosOponentes(index, index)
+        crearMensaje("Ganaste")
+       } else if((atPlayer[index]=== "TIERRA" && enemyStroke[index] === "AGUA")){
+        indexAmbosOponentes(index, index)
+        crearMensaje("Ganaste")}
+        else{
+        indexAmbosOponentes(index, index)
+        crearMensaje("Perdiste xdxd")
+       }
+    }
+
     if(enemyStroke == atPlayer) {
         crearMensaje("Empate🤝")
     } else if(atPlayer == "fuego🔥" && enemyStroke == "planta🌱") {
@@ -148,11 +263,11 @@ function crearMensaje(resultado){
     let nuevoAtaqueDelEnemigo=document.createElement('p')
 
     sectionMensajes.innerHTML=resultado
-    nuevoAtaqueDelJugador.innerHTML=atPlayer
-    nuevoAtaqueDelEnemigo.innerHTML=enemyStroke
+    nuevoAtaqueDelJugador.innerHTML= indexAtaqueJugador
+    nuevoAtaqueDelEnemigo.innerHTML= indexAtaqueEnemigo
 
-    ataqueJugador.appendChild(nuevoAtaqueDelJugador)
-    ataqueEnemigo.appendChild(nuevoAtaqueDelEnemigo)
+    atPlayer.appendChild(nuevoAtaqueDelJugador)
+    enemyStroke.appendChild(nuevoAtaqueDelEnemigo)
 }
 function crearMensajeFinal(resultadoFinal){
     sectionMensajes.innerHTML=resultadoFinal

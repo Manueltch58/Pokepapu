@@ -59,15 +59,21 @@
    }
 
 
-  #selectPet{ 
+  #select-pet{ 
     display: flex;
-    flex-direction:row;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
+    margin-top: 24px;
   }
 
   input{
     display:none;
+  }
+
+  #contenedorTarjetas{
+    display: flex;
+    flex-direction: row;
   }
  
   .botoneslabel {
@@ -75,11 +81,11 @@
     flex-direction: column-reverse;
     align-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 100px;
+    width: 120px;
     height: 100px;
-    padding: 12px;
+    padding-bottom: 1px;
     margin: 5px;
-    margin-top: 15px;
+    margin-top: 50px;
     border-radius: 28px;
     border: 10;
     background-color: white;
@@ -122,17 +128,17 @@
 
    .botoneslabel img {
     align-items: center;
-    width: 90px;
+    width: 100px;
     transition: all .3s ease;
     } 
    
    .botoneslabel img:hover {
     align-items: center;
-    width: 105px;
+    width: 115px;
    }  
    
 
-  #elija{
+  .elija{
     color:rgb(255, 255, 255);
     height:10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -141,7 +147,7 @@
     text-align: center
   }
 
-  .botonPick{
+  .pick{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -202,14 +208,13 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
    }
 
-  #botonesAt{
+  .botonesAt{
     display: flex;
     justify-content: center;
     align-items: center;
    }
 
   #botFuego {
-
     padding: 12px 10px;
     border-radius: 50px;
     border: 0;
@@ -217,15 +222,16 @@
     box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 0.4rem;
     transition: all .5s ease;
     position:static; 
     top: -10px;
     right: 320px;
+    margin: 5px;
    }
    
   #botFuego:hover {
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     background-color: #ff6723;
     color: hsl(0, 0%, 100%);
     box-shadow: #f5a34c80 0px 7px 29px 0px;
@@ -249,15 +255,16 @@
     box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 0.4rem;
     transition: all .5s ease;
     position:static; 
     top: -10px;
     right: 320px;
+    margin: 5px;
    }
    
   #botAgua:hover {
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     background-color: #26c9fc;
     color: hsl(0, 0%, 100%);
     box-shadow: #4cc5f580 0px 7px 29px 0px;
@@ -280,15 +287,16 @@
     box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 0.4rem;
     transition: all .5s ease;
     position:static; 
     top: -20px;
     right: 320px;
+    margin: 5px;
    }
    
   #botTierra:hover {
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     background-color: #86d72f;
     color: hsl(0, 0%, 100%);
     box-shadow: #4cf56b80 0px 7px 29px 0px;
