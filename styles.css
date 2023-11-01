@@ -10,6 +10,12 @@
   src: url('./assets/Cabin-VariableFont_wdth,wght.ttf') format('truetype')
 }
 
+h1 {
+  color: #fffeda;
+  letter-spacing: 4px;
+  font-family: 'zelda';
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -139,7 +145,7 @@ input:checked + label {
 }
 
 #boton-mascota:hover {
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   width: 150px;
   height: 30px;
   border-radius: 5px;
@@ -232,9 +238,62 @@ input {
   align-items: center;
 }
 
+#ver-mapa{
+  width: 439px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(96, 95, 95, 0.5);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+#ver-mapa button {
+  transition: all 0.2s ease;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background: rgba(17, 10, 6, 0.8);
+  border: 2px solid rgba(17, 10, 6, 0.5); 
+  color: #f4f2cf;
+  font-family:zelda;
+  font-style: italic;
+  margin-top: -15px;
+  margin-bottom: 5px;
+}
+
+#ver-mapa button:hover{
+  transition: all 0.1s ease;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background: rgba(17, 10, 6, 0.8);
+  border: 3px solid rgb(251, 205, 113);
+  color: #f4f2cf;
+  font-family:zelda;
+  font-style: italic;
+  margin-top: -15px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+#mapa{
+  border-radius: 5px;
+}
+
+
 
 @media (max-width: 360px) {
   .tarjetas, .tarjetas-ataques {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 360px) {
+  #ver-mapa div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
